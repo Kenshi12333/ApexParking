@@ -14,6 +14,11 @@ $todayRevenue = $parkingManager->getTodayEarnings();
 $recentActivity = $parkingManager->getRecentActivity();
 
 
+$vehicleStats = $parkingManager->getParkedVehicleStats();
+$vLabels = array_column($vehicleStats, 'vehicleTypeName');
+$vData = array_column($vehicleStats, 'vehicleCount');
+
+
 $total_slots = ($slotStats['available_slots'] ?? 0) + ($slotStats['occupied_slots'] ?? 0);
 $occupancy_percentage = ($total_slots > 0) ? round((($slotStats['occupied_slots'] ?? 0) / $total_slots) * 100) : 0;
 ?>
@@ -192,6 +197,12 @@ $occupancy_percentage = ($total_slots > 0) ? round((($slotStats['occupied_slots'
                 </div>
             </div>
 
+
+
+
+
+
+
             <div class="col s12 m7">
                 <div class="dashboard-card">
                     <div class="card-title-text" style="margin-top: 0; margin-bottom: 20px;">Live Activity Feed</div>
@@ -265,6 +276,19 @@ $occupancy_percentage = ($total_slots > 0) ? round((($slotStats['occupied_slots'
             </div>
         </div>
 
+
+
+
+                   <div class="col s12 m4">
+    <div class="card-panel" style="background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+        <h6 class="center-align" style="color: #e2e8f0; font-weight: bold; margin-bottom: 20px;">Parked Vehicle Types</h6>
+        <div style="position: relative; height: 250px; width: 100%;">
+            <canvas id="vehicleDoughnutChart"></canvas>
+        </div>
+    </div>
+</div>
+
+
     </div>
 
     <footer class="blue darken-4" style="margin-top: 50px; padding: 20px 0; text-align: center;">
@@ -284,6 +308,10 @@ $occupancy_percentage = ($total_slots > 0) ? round((($slotStats['occupied_slots'
         window.parkingData = {
             label: ['Available Slots', 'Occupied Slots'],
             data: [<?= $slotStats['available_slots'] ?? 0 ?>, <?= $slotStats['occupied_slots'] ?? 0 ?>]
+        };
+        window.vehicleTypeData = {
+            label: <?= json_encode($vLabels); ?>,
+            data: <?= json_encode($vData); ?>
         };
 
         window.occupancyData = {

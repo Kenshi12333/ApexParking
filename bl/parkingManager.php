@@ -155,5 +155,14 @@
                 return false;
             }
         }
+
+
+
+        public function getParkedVehicleStats(){
+        $response = $this->parkingModel->getParkedVehicleStats();
+        return $response->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    
     }
 ?>

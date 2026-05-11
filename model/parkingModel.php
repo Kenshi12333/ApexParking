@@ -201,7 +201,18 @@ class parkingModel{
 
 
 
-
+public function getParkedVehicleStats(){
+      
+        $selectQuery = "
+            SELECT v.vehicleTypeName, COUNT(t.transaction_ID) as vehicleCount
+            FROM tbl_vehicletypes v
+            LEFT JOIN tbl_transactions t ON v.vehicleTypeID = t.vehicleTypeID AND t.paymentStatusID IN (1, 3)
+            GROUP BY v.vehicleTypeName
+        ";
+        $response = $this->connect->prepare($selectQuery);
+        $response->execute();
+        return $response;
+    }
 
 
 

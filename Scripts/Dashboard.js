@@ -164,3 +164,47 @@ function sendOperationsSummary() {
         }
     });
 }
+
+
+
+
+    var doughnutCanvas = document.getElementById("vehicleDoughnutChart");
+    if(doughnutCanvas) {
+        let doughnutLabels = window.vehicleTypeData ? window.vehicleTypeData.label : [];
+        let doughnutData = window.vehicleTypeData ? window.vehicleTypeData.data : [];
+
+        new Chart(doughnutCanvas, {
+            type: 'doughnut',
+            data: {
+                labels: doughnutLabels,
+                datasets: [{
+                    label: 'Currently Parked',
+                    data: doughnutData,
+                    backgroundColor: [
+                        'rgba(59, 130, 246, 0.8)',
+                        'rgba(34, 197, 94, 0.8)',  
+                        'rgba(245, 158, 11, 0.8)',
+                        'rgba(168, 85, 247, 0.8)' 
+                    ],
+                    borderColor: '#1e293b',
+                    borderWidth: 2,
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '70%', 
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { 
+                            color: '#94a3b8',
+                            padding: 20,
+                            font: { family: "'Segoe UI', sans-serif", size: 11 }
+                        }
+                    }
+                }
+            }
+        });
+    }
