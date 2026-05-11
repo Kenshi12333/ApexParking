@@ -1,13 +1,19 @@
 var fnameInput = document.getElementById("FName");
+var lnameInput = document.getElementById("LName")
 
 if(fnameInput){
    fnameInput.addEventListener("input", function(){
         validateNumFields(this);
    });
 }
+if(lnameInput){
+   lnameInput.addEventListener("input", function(){
+        validateNumFields(this);
+   });
+}
 
 function validateNumFields(element){
-    element.value = element.value.replace(/[^a-zA-Z0-9]/g, '');
+    element.value = element.value.replace(/[^a-zA-Z]/g, '');
 }
 
 function submitFunc(){
