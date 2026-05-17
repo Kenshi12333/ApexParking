@@ -115,6 +115,23 @@ $occupancy_percentage = ($total_slots > 0) ? round((($slotStats['occupied_slots'
         .btn-summary:hover {
             background: linear-gradient(135deg, #16a34a, #15803d) !important;
         }
+
+        .roles-overview-row > .col {
+            margin-bottom: 28px;
+            padding: 0 18px;
+        }
+
+        .analytics-row > .col {
+            padding: 0 20px;
+            margin-bottom: 28px;
+        }
+
+        .chart-canvas-wrap {
+            position: relative;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 0 28px 8px;
+        }
     </style>
 </head>
 <body>
@@ -149,7 +166,7 @@ $occupancy_percentage = ($total_slots > 0) ? round((($slotStats['occupied_slots'
         </ul>
     </div>
 </nav>
-    <div class="container" style="width: 95%; max-width: 1600px; margin-top: 40px; margin-bottom: 50px;">
+    <div class="container" style="width: 92%; max-width: 1500px; margin-top: 40px; margin-bottom: 50px; padding: 0 24px; box-sizing: border-box;">
         
         <h5 style="color: #ffffff; font-weight: 300; margin-bottom: 30px;">Live Operations</h5>
         
@@ -241,7 +258,7 @@ $occupancy_percentage = ($total_slots > 0) ? round((($slotStats['occupied_slots'
 
         <h5 style="color: #ffffff; font-weight: 300; margin-top: 40px; margin-bottom: 30px;">System Roles Overview</h5>
         
-        <div class="row">
+        <div class="row roles-overview-row">
             <?php foreach($roleCounts as $index => $role) : ?>
                 <div class="col s12 m6 l4">
                     <div class="dashboard-card center-align">
@@ -256,11 +273,11 @@ $occupancy_percentage = ($total_slots > 0) ? round((($slotStats['occupied_slots'
 
         <h5 style="color: #ffffff; font-weight: 300; margin-top: 40px; margin-bottom: 30px;">System Analytics</h5>
         
-        <div class="row">
+        <div class="row analytics-row">
             <div class="col s12 l6">
                 <div class="dashboard-card center-align">
                     <div class="card-title-text" style="margin-bottom: 20px;">Users per System Role</div>
-                    <div style="position: relative; height: 350px; width: 100%;">
+                    <div class="chart-canvas-wrap" style="height: 350px;">
                         <canvas id="myChart"></canvas>
                     </div>
                 </div>
@@ -269,7 +286,7 @@ $occupancy_percentage = ($total_slots > 0) ? round((($slotStats['occupied_slots'
             <div class="col s12 l6">
                 <div class="dashboard-card center-align">
                     <div class="card-title-text" style="margin-bottom: 20px;">Parking Space Utilization</div>
-                    <div style="position: relative; height: 350px; width: 100%;">
+                    <div class="chart-canvas-wrap" style="height: 350px;">
                         <canvas id="parkingChart"></canvas>
                     </div>
                 </div>
@@ -279,14 +296,16 @@ $occupancy_percentage = ($total_slots > 0) ? round((($slotStats['occupied_slots'
 
 
 
-                   <div class="col s12 m4">
-    <div class="card-panel" style="background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
-        <h6 class="center-align" style="color: #e2e8f0; font-weight: bold; margin-bottom: 20px;">Parked Vehicle Types</h6>
-        <div style="position: relative; height: 250px; width: 100%;">
-            <canvas id="vehicleDoughnutChart"></canvas>
+        <div class="row analytics-row">
+            <div class="col s12">
+                <div class="dashboard-card center-align">
+                    <div class="card-title-text" style="margin-bottom: 20px;">Parked Vehicle Types</div>
+                    <div class="chart-canvas-wrap" style="height: 280px; max-width: 520px; margin: 0 auto;">
+                        <canvas id="vehicleDoughnutChart"></canvas>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
 
 
     </div>

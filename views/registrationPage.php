@@ -121,8 +121,14 @@ $roles = $rolesManager ->getRoles();
 
                         <div class="input-field col s12">
                             <i class="material-icons prefix">lock</i>
-                            <input id="Password" type="password" class="validate" maxlength="49">
+                            <input id="Password" type="password" class="validate" maxlength="64">
                             <label for="Password">Password</label>
+                        </div>
+
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">lock_outline</i>
+                            <input id="ConfirmPassword" type="password" class="validate" maxlength="64">
+                            <label for="ConfirmPassword">Confirm Password</label>
                         </div>
 
                         <div class="input-field col s12">

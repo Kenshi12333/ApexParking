@@ -26,6 +26,9 @@ document.addEventListener("DOMContentLoaded", function() {
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
+                layout: {
+                    padding: { left: 20, right: 20, top: 8, bottom: 8 }
+                },
                 scales: {
                     y: {
                         beginAtZero: true,
@@ -70,6 +73,9 @@ document.addEventListener("DOMContentLoaded", function() {
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
+                layout: {
+                    padding: { left: 20, right: 20, top: 8, bottom: 8 }
+                },
                 animation: {
                     onComplete: () => {
                         delayed = true;
@@ -135,7 +141,7 @@ document.addEventListener("DOMContentLoaded", function() {
 function sendOperationsSummary() {
     Swal.fire({
         title: "Generating Report...",
-        text: "Please wait while we compile the daily operations data.",
+        text: "Please wait while the system is compiling the daily operations data.",
         background: '#1e293b',
         color: '#fff',
         allowOutsideClick: false,
@@ -148,7 +154,7 @@ function sendOperationsSummary() {
         if(response.trim() === "success") {
             Swal.fire({
                 title: "Report Sent!",
-                text: "The operations summary has been emailed to the manager.",
+                text: "The operations summary has been emailed.",
                 icon: "success",
                 background: '#1e293b',
                 color: '#fff'
@@ -194,6 +200,9 @@ function sendOperationsSummary() {
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
+                layout: {
+                    padding: { left: 16, right: 16, top: 8, bottom: 8 }
+                },
                 cutout: '70%', 
                 plugins: {
                     legend: {

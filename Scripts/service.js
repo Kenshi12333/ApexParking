@@ -22,13 +22,23 @@ function submitFunc(){
     var select = document.getElementById("roleSelect").value;
     var email = document.getElementById("Email").value;
     var password = document.getElementById("Password").value;
+    var confirmPassword = document.getElementById("ConfirmPassword").value;
 
-    if (!firstName || !lastName || !select || !email || !password) {
+    if (!firstName || !lastName || !select || !email || !password || !confirmPassword) {
         Swal.fire({
             title: "Missing Information!",
             text: "Please fill out all the nessesary Information before adding a user.",
             icon: "warning",
             confirmButtonColor: "#3085d6"
+        });
+        return;
+    }
+    if (password !== confirmPassword) {
+        Swal.fire({
+            title: "Password Mismatch!",
+            text: "Password and Confirm Password do not match.",
+            icon: "error",
+            confirmButtonColor: "#d33"
         });
         return;
     }
@@ -75,15 +85,25 @@ function updateFunc(userID){
     var select = document.getElementById("roleSelect").value;
     var email = document.getElementById("Email").value;
     var password = document.getElementById("Password").value;
+    var confirmPassword = document.getElementById("ConfirmPassword").value;
 
-    if (!firstName || !lastName || !select || !email || !password) {
+    if (!firstName || !lastName || !select || !email || !password || !confirmPassword) {
         Swal.fire({
             title: "Missing Information!",
-            text: "Please fill out all fields (Name, Email, Password, and Role) to update.",
+            text: "Please fill out all fields (Name, Email, Password, Confirm Password, and Role) to update.",
             icon: "warning",
             confirmButtonColor: "#3085d6"
         });
         return; 
+    }
+    if (password !== confirmPassword) {
+        Swal.fire({
+            title: "Password Mismatch!",
+            text: "Password and Confirm Password do not match.",
+            icon: "error",
+            confirmButtonColor: "#d33"
+        });
+        return;
     }
     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {

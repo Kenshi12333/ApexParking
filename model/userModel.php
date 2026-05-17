@@ -14,7 +14,7 @@ public function createUser($fName, $lName, $userRoleID, $email, $password){
 
     $dateNow = date('Y-m-d H:i:s');
 
-    $hashPassword = password_hash($password, PASSWORD_BCRYPT);
+    $hashPassword = password_hash($password, PASSWORD_ARGON2ID);
 
     $response = $this->connect->prepare($insertQuery);
     $response->bindParam(":firstName",$fName);
@@ -48,7 +48,7 @@ public function createUser($fName, $lName, $userRoleID, $email, $password){
 
     $dateNow = date('Y-m-d H:i:s');
 
-    $hashPassword = password_hash($password, PASSWORD_BCRYPT);
+    $hashPassword = password_hash($password, PASSWORD_ARGON2ID);
 
     $response->bindParam(":firstName", $fName);
     $response->bindParam(":lastName", $lName);
